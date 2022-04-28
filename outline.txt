@@ -1,0 +1,134 @@
+
+
+<App />
+    - State: [currUser, setCurrUser] = useState()
+        + user obj has application property, an array of job IDs
+        + let's not use the user isAdmin property 
+    - Props: none
+    - Renders Jobly
+    - state will be passed to children as a context
+
+    <UserContext.Provider value=() >
+        <Nav />
+            - Links to Home, Jobs, Companies
+            - State: 
+            - Props:
+            + no error handling, but there will be a redirect (bogus /jkjkkjk will take you back to /home)
+            + present across pages/endpoints
+
+        <Routes />
+            - State: none
+            - Props: none
+            - parses URL params to match endpoints and output page components
+
+            <HomePage />
+                    - State: none
+                    - Props: none
+                    - purely presentational
+
+            <CompanyList />
+                - Requests list of all companies on load, handles search callback to update list
+                - State: 
+                    + [companies, setCompanies] 
+                        # will have key that is the company id as it exists in db, from axios req
+                - Props: 
+                    + handleSearch, fn passed to SearchBar
+                        takes search params and makes axios req to API, 
+                        parses JSON and passes list(arr) of matching companies(objs) to the CompanyList 
+
+                <SearchBar />
+                    - State: [formData, setFormData]
+                    - Props: handleSearch
+                    - a simple form, grabs the query someone passed in and calls handleSearch to make axios req  
+                        for matching companies to display, updates companies state in Companies
+
+                <CompanyCardList />
+                    - Displays list of company cards
+                    - State: none
+                    - Props: companies, a list of matching companies to display
+                   
+                    <CompanyCard />
+                    - Displays company detail as a card
+                        - State: none
+                        - Props: company, data on a single company to render into a card
+                        - shows apply or applied button based on user, 
+                        compare context to check user obj application property for the job's ID 
+
+            <CompanyDetail />
+                - Displays company name, description and a list of jobs owned by that company
+                - State: [currCo, setCurrCo] (currCo = {name, desc, jobs = [{job1}, {job2}, ...])
+                - Props: (uses URL param)
+
+                <JobCardList />
+                - Displays the list of job cards for the company
+                    - State: none
+                    - Props: jobs 
+
+                    <JobCard />
+                    - Displays details of job for the company
+                        - State: none
+                        - Props: job
+                        - shows apply or applied button based on user, 
+                        compare context to check user obj application property for the job's ID 
+            <JobList />
+                - Requests list of all jobs on load, handles search callback to update list
+                - State: 
+                    + [jobs, setJobs] 
+                        # will have key that is the job id as it exists in db, from axios req
+                - Props: 
+                    + handleSearch, fn passed to SearchBar, 
+                        takes search params and makes axios req to API, 
+                        parses JSON and passes list(arr) of matching jobs(objs) to the JobList 
+
+                <SearchBar />
+                    - State: [formData, setFormData]
+                    - Props: handleSearch
+                    - a simple form, grabs the query someone passed in and calls handleSearch to make axios req  
+                        for matching jobs to display, updates jobs state in Jobs
+
+                <JobCardList />
+                    - Displays the list of job cards
+                    - State: none
+                    - Props: jobs, a list of matching jobs to display
+
+                    <JobCard />
+                        - Displays job details as a card
+                        - State: none
+                        - Props: job, data on a single job to render into a card
+            <Login />
+                <UserForm />
+            <Signup />
+                <UserForm />
+            <Profile />
+                <UserForm />
+        </UserContext.Provider>
+
+
+Shopping List:
+
+-routes:
+    +/login
+        ~login form
+    +/signup
+        ~signup form
+    +/profile  
+        ~profile
+
+Generic form, rendered by login, signup, profile
+could have actual form itself 
+be the actual output of passing in a config into the form
+Props: an array of input names 
+    (ex: for profile = [username, first name, last name, email])
+should have an errors div to show error, 
+if it's empty we give the user what they want
+
+-login page 
+    +form to log in
+-signup page    
+    +form to sign up
+-profile component
+    +form to update profile
+
+-do we want to make an apply button that takes a job ID 
+    and looks into the user obj at their application property for that ID
+    to decide to render "apply" or "applied"?
