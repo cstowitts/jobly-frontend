@@ -24,16 +24,20 @@ function Profile({currUser, update}) {
 
     function handleSubmit (evt){
         evt.preventDefault();
-        const copy = formData;
-        delete copy.username;
-        update(copy);
-        setFormData(initialFormData);
+        // const copy = formData;
+        // delete copy.username;
+        //og thought was to prevent changing the username if a user
+        //changed the disabled attr on the frontend--deleted the onClick
+        //for the username input instead duh
+        //the thought behind making a copy of formData was we were concerned with mutating our formData state (not actually a thing)
+        update(formData);
+        setFormData(formData);
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username</label>
-            <input disabled type="text" name="username" id="username" onChange={handleChange} value={user.user.username} />
+            <input disabled type="text" name="username" id="username" value={user.user.username} />
             <label htmlFor="firstName">First Name</label>
             <input type="firstName" name="firstName" id="firstName" onChange={handleChange} value={formData.firstName} />
             <label htmlFor="lastName">Last Name</label>

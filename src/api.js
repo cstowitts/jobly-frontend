@@ -108,8 +108,8 @@ class JoblyApi {
 
   /** Update a user's profile */
   
-  static async updateUser(profileFormData){
-    const user = this.request(`users/${profileFormData.username}`, profileFormData, 'patch');
+  static async updateUser(profileFormData, username){
+    const user = this.request(`users/${username}`, profileFormData, 'patch');
     return user; 
   }
 
