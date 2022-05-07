@@ -9,21 +9,23 @@ import Login from "./Login";
 import Register from "./Register";
 import UserContext from "./userContext";
 import Profile from "./Profile";
-import Logout from "./Logout";
-
-
 
 /** Routes Component
  * 
  * parses URL params to match endpoints and output page components
  * 
- * Props: none
- * State: none
+ * Props:
+ *  login
+ *  register
+ *  update
+ *
+ * State: 
+ *  errors
  * 
  * App -> Routes
  */
 
-function Routes ({login, register, update, logout}) {
+function Routes ({login, register, update, errors}) {
     console.log("Routes");
     const {user} =  useContext(UserContext);
     console.log("Routes useContext user: ", user);
@@ -37,16 +39,13 @@ function Routes ({login, register, update, logout}) {
                     </Route>
 
                     <Route exact path="/login">
-                        <Login login={login} />
+                        <Login login={login} errors={errors} />
                     </Route>
 
                     <Route exact path="/register">
-                        <Register register={register} />
+                        <Register register={register} errors={errors} />
                     </Route>
 
-                    <Route exact path="/logout">
-                        <Redirect to="/" />
-                    </Route>
                     <Redirect to="/login" />
                 </Switch>
             }
@@ -67,12 +66,10 @@ function Routes ({login, register, update, logout}) {
                         <Home />
                     </Route>
                     <Route exact path="/profile">
-                         <Profile update={update} />
+                         <Profile update={update} errors={errors}/>
                     </Route>
-                    <Route exact path="/logout">
-                        <Logout logout={logout} />
-                    </Route>
-                    <Redirect to="/companies" />
+                    
+                    <Redirect to="/" />
                 </Switch>
             }
         </div>

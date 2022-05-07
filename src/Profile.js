@@ -1,7 +1,7 @@
 import {useState, useContext} from "react";
 import UserContext from "./userContext";
 
-function Profile({currUser, update}) {
+function Profile({update, errors}) {
     
     const {user} =  useContext(UserContext);
     const initialFormData = {
@@ -35,17 +35,29 @@ function Profile({currUser, update}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input disabled type="text" name="username" id="username" value={user.user.username} />
-            <label htmlFor="firstName">First Name</label>
-            <input type="firstName" name="firstName" id="firstName" onChange={handleChange} value={formData.firstName} />
-            <label htmlFor="lastName">Last Name</label>
-            <input type="lastName" name="lastName" id="lastName" onChange={handleChange} value={formData.lastName} />
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
-            <button type="submit">Update Profile</button>
-        </form>
+        <div className="Profile">
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username</label>
+                <input disabled type="text" name="username" id="username" value={user.user.username} />
+                <label htmlFor="firstName">First Name</label>
+                <input type="firstName" name="firstName" id="firstName" onChange={handleChange} value={formData.firstName} />
+                <label htmlFor="lastName">Last Name</label>
+                <input type="lastName" name="lastName" id="lastName" onChange={handleChange} value={formData.lastName} />
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" id="email" onChange={handleChange} value={formData.email} />
+                <button type="submit">Update Profile</button>
+            </form>
+
+            { errors.length > 0 &&
+                <div className="Profile-errors">
+                    { errors.map((e, idx) => <p key={idx}>{e}</p>) }
+                </div>
+            }
+
+            { errors.length === 0 &&
+                <div className="Profile-errors" />
+            }
+        </div>
     )
 }
 

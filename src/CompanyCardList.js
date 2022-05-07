@@ -15,7 +15,7 @@ function CompanyCardList({companies}){
 
 
     return (
-        <div>
+        <div className="CompanyCardList mt-3">
             {companies.map(co => <CompanyCard key={co.handle} company={co} />)}
         </div>
     )

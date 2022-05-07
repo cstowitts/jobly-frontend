@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Login({login}) {
+function Login({login, errors}) {
     console.log("in the login component! login = ", login);
 
     const initialFormData = {username:"", password:""};
@@ -25,13 +25,26 @@ function Login({login}) {
     //remember to prevent default!! and reset form values
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" id="username" onChange={handleChange} value={formData.username} />
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" onChange={handleChange} value={formData.password} />
-            <button type="submit">Login</button>
-        </form>
+        <div className="Login">
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username</label>
+                <input type="text" name="username" id="username" onChange={handleChange} value={formData.username} />
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" id="password" onChange={handleChange} value={formData.password} />
+                <button type="submit">Login</button>
+            </form>
+
+            { errors.length > 0 &&
+                <div className="Login-errors">
+                    { errors.map((e, idx) => <p key={idx}>{e}</p>) }
+                </div>
+            }
+
+            { errors.length === 0 &&
+                <div className="Login-errors" />
+            }
+       
+        </div>
     )
 }
 

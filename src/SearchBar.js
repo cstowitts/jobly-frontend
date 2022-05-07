@@ -42,7 +42,7 @@ function SearchBar({handleSearch}){
 
     
     return (
-        <form onSubmit={handleSubmit} className="SearchBar">
+        <form onSubmit={handleSubmit} className="SearchBar form-inline">
             <input 
                 name="query"
                 id="query"
@@ -50,8 +50,9 @@ function SearchBar({handleSearch}){
                 placeholder="Enter search term"
                 value={formData.query}
                 onChange={handleChange}
+                className="form-control"
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
 }
