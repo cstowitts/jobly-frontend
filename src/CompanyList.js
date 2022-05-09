@@ -42,7 +42,7 @@ function CompanyList(){
     }
 
     return (
-        <div className="CompanyList pt-5 pl-3">
+        <div className="CompanyList pt-2 pl-3">
             <SearchBar handleSearch={handleSearch}/>
             {companies.length > 0 ? 
                 <div>

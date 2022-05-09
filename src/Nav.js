@@ -20,18 +20,17 @@ function Nav ({logout}){
     console.log("Nav useContext user: ", user);
 
     return (
-        <div className="Nav container mb-5">
-            <nav className="navbar fixed-top navbar-dark bg-primary row d-flex justify-content-around">
+            <nav className="Nav container-fluid mb-5 navbar navbar-expand-lg navbar-dark bg-primary d-flex py-0 justify-content-between">
                 <NavLink exact to="/" className="navbar-brand">
                     Jobly
                 </NavLink>
-            
+        
                 {user.isLoggedIn === false &&
                     <>
-                        <NavLink exact to="/login" className="nav-link">
+                        <NavLink exact to="/login" className="nav-link text-light">
                             Login
                         </NavLink>
-                        <NavLink exact to="/register">
+                        <NavLink exact to="/register" className="text-light">
                             Register
                         </NavLink>
                     </>
@@ -54,7 +53,6 @@ function Nav ({logout}){
                     </>
                 }
             </nav>
-        </div>
     )
 }
 

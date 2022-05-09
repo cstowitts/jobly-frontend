@@ -15,7 +15,7 @@ function Home() {
     const {user} =  useContext(UserContext);
     console.log(user);
     return (
-        <section className="Home col-md-8">
+        <section className="Home col-md-8 mx-auto">
             <Card>
                 <CardBody className="text-center">
                     <CardTitle>
