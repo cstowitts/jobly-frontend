@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../assets/scott-webb-OxHPDs4WV8Y-unsplash.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* background-attachment property sets whether a background image scrolls with the rest of the page, or is fixed.*/
+
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+}
+
+.jobly-logo {
+    color: secondary
+}

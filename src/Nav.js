@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom"
 import { useContext } from "react";
 import UserContext from "./userContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers } from '@fortawesome/free-solid-svg-icons'
 
 
 /** Nav: Links to Home, Jobs, Companies
@@ -20,8 +22,9 @@ function Nav ({logout}){
     console.log("Nav useContext user: ", user);
 
     return (
-            <nav className="Nav container-fluid mb-5 navbar navbar-expand-lg navbar-dark bg-primary d-flex py-0 justify-content-between">
+            <nav className="Nav container-fluid mb-4 navbar navbar-expand-lg navbar-dark bg-primary d-flex py-0 justify-content-around">
                 <NavLink exact to="/" className="navbar-brand">
+                    <FontAwesomeIcon icon={faUsers} className="jobly-logo fs-5 me-2"/>
                     Jobly
                 </NavLink>
         

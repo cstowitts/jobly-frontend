@@ -42,17 +42,23 @@ function SearchBar({handleSearch}){
 
     
     return (
-        <form onSubmit={handleSubmit} className="SearchBar form-inline">
-            <input 
-                name="query"
-                id="query"
-                type="text"
-                placeholder="Enter search term"
-                value={formData.query}
-                onChange={handleChange}
-                className="form-control"
-            />
-            <button type="submit" className="btn btn-primary">Submit</button>
+        <form onSubmit={handleSubmit} className="SearchBar mb-5 input-group w-75 row g-3 ms-auto">
+            <div className="col form-outline">
+                <input 
+                    name="query"
+                    id="query"
+                    type="search"
+                    placeholder="Enter search term"
+                    value={formData.query}
+                    onChange={handleChange}
+                    className="form-control col"
+                />
+            </div>
+            <div className="col">
+                <button type="submit" className="btn btn-primary">
+                    Search
+                </button>
+            </div>
         </form>
     );
 }

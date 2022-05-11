@@ -1,0 +1,35 @@
+//override
+
+@import url(http://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap);
+
+$font-family-base: 'Raleway', sans-serif;;
+
+
+$white: #ffffff;
+
+$theme-colors: (
+    "light":      #f1f4f5,
+    "dark":       #3d3635,
+    "primary":    #2C19A3,
+    "secondary":  #7365ef,
+    "info":       #488ee9,
+    "success":    #65b900,
+    "warning":    #ffc67e,
+    "danger":     #fc0068,
+);
+
+// $logo-color: #488ee9;
+// could also set .jobly-logo {color: $logo-color}
+
+body {
+    font-family: $font-family-base;
+}
+
+.jobly-logo {
+  color: map-get($theme-colors, "info");
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+//custom
