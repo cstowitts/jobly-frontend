@@ -1,3 +1,29 @@
+# Welcome to Jobly
+
+Jobly is a job application site built using React on the frontend and with Express and PostgreSQL for the backend.  
+
+Users can register an account and explore companies and job postings. 
+
+This application was created equally through the contributions of Owen Waring and Cella Stowitts.
+## Authors
+
+- [@cstowitts](https://github.com/cstowitts)
+- [@pixelready](https://github.com/pixelready)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
